@@ -1,18 +1,18 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 import Item from './Item'
 
 const ItemSlider = ({items}) => {
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(1);
     const length = items.length;
 
     const nextSlide = () => {
-        setCurrent(current === length - 1 ? 0 : current + 1);
+        setCurrent(current === length - 2 ? 1 : current + 1);
     };
 
     const prevSlide = () => {
-        setCurrent(current === 0 ? length - 1 : current - 1);
-    }
+        setCurrent(current === 1 ? length - 2 : current - 1);
+    };
 
     if(!Array.isArray(items) || length <= 0) {
         return null;
@@ -24,14 +24,14 @@ const ItemSlider = ({items}) => {
             <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
             {items.map((item, index) => {
                     return (
-                        <div className={index === current ? 'slide active' : 'slide'} key={index}>
-                            {index === current && (<Item {...item}/>)}
+                        <div className={index === current ? 'slide active' : 'slide'}>
+                            {(index === current || index === current + 1 || index === current - 1) && (<Item {...item}/>)}
                         </div>
                     )
                 })
             }
         </section>
     )
-}
+};
 
 export default ItemSlider;

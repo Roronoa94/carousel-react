@@ -1,16 +1,22 @@
+import React from "react";
+
 const Item = (props) => {
     console.log(props)
     return (
-        <div>
-            <img src={props.image} />
-            <div>
-                <div>{props.name}</div>
-                <div>{props.price}</div>
-                <div>{props.category}</div>
+        <div className='item'>
+            <div className='img'>
+                <img src={props.image} alt='item image'/>
+            </div>
+            <div className='info'>
+                <div className='name'>{props.name}</div>
+                <div className='price'>{props.price}</div>
+                <div className='category'>{props.category}</div>
             </div>
         </div>
     )
-}
+};
+
+
 
 export default Item;
 

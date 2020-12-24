@@ -43,7 +43,7 @@ const ItemSlider = ({items}) => {
                     itemsToRender.map((item, index) => {
                         return (
                             <div className={index === current ? 'slide active' : 'slide'}>
-                                {(index === current)
+                                {(index === current + 1 || index === current || index === current - 1)
                                 &&
                                 (<Item {...item}/>)}
                             </div>
